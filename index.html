@@ -3,148 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeuroScope AVZ - Gravação Real</title>
+    <title>NeuroScope AVZ - Gravação Premium</title>
+    
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* VARIÁVEIS DE ESTILO AVZ NEUROSCOPE */
-        :root {
-            --bg-primary: #000000;
-            --bg-secondary: #0c0c0d;
-            --panel-bg: #0b0b0d;
-            --text-primary: #F0F0F0;
-            --text-secondary: #B0B0B0;
-            --accent-purple: #8A2BE2;
-            --accent-blue: #00C2FF;
-            --gold-accent: #D4AF37;
-            --border-color: rgba(212, 175, 55, 0.2);
-            --border-light: rgba(255, 255, 255, 0.08);
-            --shadow-luxury: 0 25px 50px rgba(0, 0, 0, 0.25), 0 15px 30px rgba(0, 0, 0, 0.2);
-            --shadow-glow: 0 8px 32px rgba(138, 43, 226, 0.3);
-            --shadow-blue: 0 8px 32px rgba(0, 194, 255, 0.25);
-            --gradient-purple-blue: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-blue) 100%);
-            --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #F4E4B8 50%, #B8860B 100%);
-            --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
+        /* ===== RESET E VARIÁVEIS ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            /* Cores Gold Luxury */
+            --gold-24k: #D4AF37;
+            --gold-18k: #F4E4B8;
+            --gold-14k: #B8860B;
+            --gold-rose: #E6C9A8;
+            --gold-white: #FFF8E1;
+            
+            /* Fundos */
+            --bg-obsidian: #0A0A0A;
+            --bg-charcoal: #121212;
+            --bg-onyx: #1A1A1A;
+            --bg-velvet: #1E1E1E;
+            
+            /* Texto */
+            --text-platinum: #F8F9FA;
+            --text-silver: #E9ECEF;
+            --text-graphite: #B0B0B0;
+            --text-smoke: #8A8A8A;
+            
+            /* Gradientes */
+            --gradient-imperial: linear-gradient(135deg, 
+                var(--gold-24k) 0%,
+                var(--gold-rose) 33%,
+                var(--gold-white) 66%,
+                var(--gold-14k) 100%);
+            
+            /* Bordas */
+            --border-gold-thin: 1px solid rgba(212, 175, 55, 0.3);
+            --border-gold-thick: 2px solid rgba(212, 175, 55, 0.6);
+            
+            /* Sombras */
+            --shadow-couture: 0 25px 50px rgba(0, 0, 0, 0.5);
+            --shadow-golden: 0 20px 40px rgba(212, 175, 55, 0.3);
+            --shadow-embossed: 
+                inset 0 2px 4px rgba(255, 255, 255, 0.1),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+            
+            /* Transições */
+            --transition-couture: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            
+            /* Fontes */
+            --font-couture: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-accent: 'Poppins', sans-serif;
+            
+            /* Bordas arredondadas */
+            --radius-couture: 24px;
+            --radius-refined: 16px;
+            --radius-soft: 12px;
+            --radius-pill: 999px;
+        }
+
+        /* ===== ESTILOS GERAIS ===== */
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
+            font-family: var(--font-body);
+            background: var(--bg-obsidian);
+            color: var(--text-platinum);
             min-height: 100vh;
-            padding: 30px;
-            font-weight: 300;
+            padding: 20px;
             position: relative;
             overflow-x: hidden;
         }
 
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(0, 194, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
-            z-index: -1;
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(184, 134, 11, 0.06) 0%, transparent 50%),
+                linear-gradient(135deg, var(--bg-velvet) 0%, var(--bg-onyx) 50%, var(--bg-charcoal) 100%);
+            z-index: -2;
         }
 
-        /* HEADER COMPACTO */
-        .header-compact {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 40px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid var(--border-light);
-            position: relative;
-        }
-
-        .header-compact::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100px;
-            height: 2px;
-            background: var(--gradient-purple-blue);
-        }
-
-        .logo-small {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
-            background: var(--gradient-purple-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .logo-circle-text {
-            font-family: 'Cinzel', serif;
-            font-size: 22px;
-            font-weight: 600;
-            color: white;
-        }
-
-        .logo-title {
-            font-family: 'Cinzel', serif;
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        /* CONTAINER PRINCIPAL */
+        /* ===== CONTAINER PRINCIPAL ===== */
         .container {
             width: 100%;
-            max-width: 900px;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== TELA DE LOGIN LUXURY ===== */
+        .login-container-luxury {
+            display: none;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(30px);
+            padding: 45px;
+            border-radius: var(--radius-couture);
+            border: var(--border-gold-thin);
+            box-shadow: var(--shadow-couture);
+            animation: appearCouture 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            max-width: 420px;
             margin: 0 auto;
         }
 
-        /* CARD PRINCIPAL */
-        .main-card {
-            background: rgba(11, 11, 13, 0.95);
-            backdrop-filter: blur(30px);
-            padding: 40px;
-            border-radius: 24px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-luxury);
-            position: relative;
-            overflow: hidden;
-            animation: containerEntrance 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .main-card::before {
+        .login-container-luxury::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 6px;
-            background: var(--gradient-purple-blue);
+            height: 5px;
+            background: var(--gradient-imperial);
             z-index: 2;
         }
 
-        @keyframes containerEntrance {
+        .login-title-luxury {
+            font-family: var(--font-couture);
+            font-size: 32px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 35px;
+            background: linear-gradient(90deg, var(--gold-24k), var(--gold-18k));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+        }
+
+        .login-title-luxury::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-imperial);
+            border-radius: 2px;
+        }
+
+        .login-form-luxury {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .input-group-luxury {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .input-group-luxury label {
+            font-size: 14px;
+            color: var(--text-graphite);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .input-group-luxury input {
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.05);
+            border: var(--border-gold-thin);
+            border-radius: var(--radius-soft);
+            color: var(--text-platinum);
+            font-size: 15px;
+            transition: var(--transition-couture);
+            font-family: var(--font-body);
+        }
+
+        .input-group-luxury input:focus {
+            outline: none;
+            border-color: var(--gold-24k);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .btn-login-luxury {
+            padding: 20px 40px;
+            background: var(--gradient-imperial);
+            color: #000;
+            border: none;
+            border-radius: var(--radius-soft);
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition-couture);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+            font-family: var(--font-body);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-login-luxury:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .login-error-luxury {
+            color: #FF4D4F;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+            padding: 15px;
+            background: rgba(255, 77, 79, 0.1);
+            border-radius: var(--radius-soft);
+            border: 1px solid rgba(255, 77, 79, 0.3);
+        }
+
+        @keyframes appearCouture {
             0% {
                 opacity: 0;
                 transform: translateY(40px) scale(0.95);
@@ -155,14 +245,115 @@
             }
         }
 
-        /* TÍTULO DA PÁGINA */
-        .page-title {
-            font-family: 'Cinzel', serif;
-            font-size: 36px;
+        /* ===== HEADER LUXURY ===== */
+        .header-luxury {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+        }
+
+        .header-luxury::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 120px;
+            height: 3px;
+            background: var(--gradient-imperial);
+            border-radius: 2px;
+        }
+
+        .logo-luxury {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-circle-luxury {
+            width: 55px;
+            height: 55px;
+            border-radius: 16px;
+            background: var(--gradient-imperial);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-circle-luxury::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+        }
+
+        .logo-circle-text {
+            font-family: var(--font-couture);
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-title-luxury {
+            font-family: var(--font-couture);
+            font-size: 24px;
+            font-weight: 600;
+            background: linear-gradient(90deg, var(--gold-24k), var(--gold-18k));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* ===== CARD PRINCIPAL ===== */
+        .main-card-luxury {
+            display: none;
+            background: rgba(26, 26, 26, 0.92);
+            backdrop-filter: blur(30px);
+            padding: 45px;
+            border-radius: var(--radius-couture);
+            border: var(--border-gold-thin);
+            box-shadow: var(--shadow-couture);
+            position: relative;
+            overflow: hidden;
+            animation: appearCouture 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .main-card-luxury::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-imperial);
+            z-index: 2;
+        }
+
+        /* ===== TÍTULO DA PÁGINA ===== */
+        .page-title-luxury {
+            font-family: var(--font-couture);
+            font-size: 38px;
             font-weight: 600;
             text-align: center;
-            margin-bottom: 40px;
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+            margin-bottom: 45px;
+            background: linear-gradient(90deg, var(--gold-24k), var(--gold-18k));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -172,41 +363,49 @@
             transform: translateX(-50%);
         }
 
-        .page-title::after {
+        .page-title-luxury::after {
             content: '';
             position: absolute;
-            bottom: -12px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 100px;
             height: 3px;
-            background: var(--gradient-purple-blue);
+            background: var(--gradient-imperial);
             border-radius: 2px;
         }
 
-        /* VISUALIZADOR DE CÂMERA REAL */
-        .camera-container {
+        /* ===== CONTAINER DA CÂMERA ===== */
+        .camera-container-luxury {
             width: 100%;
-            height: 400px;
+            height: 420px;
             border-radius: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             position: relative;
             overflow: hidden;
-            border: 2px solid var(--border-light);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            background: #000;
         }
 
-        .camera-container::before {
+        .camera-container-luxury::before {
             content: '';
             position: absolute;
             top: -2px;
             left: -2px;
             right: -2px;
             bottom: -2px;
-            background: var(--gradient-purple-blue);
+            background: linear-gradient(45deg, 
+                var(--gold-24k),
+                var(--gold-18k),
+                var(--gold-14k),
+                var(--gold-24k));
             border-radius: 22px;
             z-index: -1;
-            opacity: 0.3;
+            opacity: 0.4;
+            filter: blur(5px);
         }
 
         #videoElement {
@@ -214,9 +413,10 @@
             height: 100%;
             object-fit: cover;
             background: #000;
+            display: none;
         }
 
-        .camera-placeholder {
+        .camera-placeholder-luxury {
             position: absolute;
             top: 0;
             left: 0;
@@ -226,48 +426,88 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.7);
-            color: var(--text-secondary);
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--text-graphite);
             z-index: 2;
+            backdrop-filter: blur(10px);
         }
 
-        .camera-icon {
-            font-size: 60px;
+        .camera-icon-luxury {
+            font-size: 65px;
             margin-bottom: 20px;
-            color: rgba(138, 43, 226, 0.5);
+            color: rgba(212, 175, 55, 0.5);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
 
-        .recording-indicator {
+        /* ===== BOTÃO TESTAR CÂMERA ===== */
+        .camera-test-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .btn-test-camera-luxury {
+            padding: 16px 32px;
+            background: linear-gradient(135deg, var(--gold-14k), var(--gold-24k));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition-couture);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-body);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-test-camera-luxury:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-test-camera-luxury:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* ===== INDICADOR DE GRAVAÇÃO ===== */
+        .recording-indicator-luxury {
             position: absolute;
             top: 25px;
             right: 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             color: #FF4D4F;
             font-size: 14px;
-            opacity: 0;
-            transition: opacity 0.3s;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             z-index: 10;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 77, 79, 0.3);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 77, 79, 0.4);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(255, 77, 79, 0.2);
+            opacity: 0;
+            transition: all 0.4s ease;
         }
 
-        .recording-dot {
-            width: 12px;
-            height: 12px;
-            background-color: #FF4D4F;
+        .recording-dot-luxury {
+            width: 14px;
+            height: 14px;
+            background: linear-gradient(135deg, #FF4D4F, #FF6B6B);
             border-radius: 50%;
-            animation: pulse 1.5s infinite;
-            box-shadow: 0 0 15px rgba(255, 77, 79, 0.8);
+            animation: pulseLuxury 1.5s infinite;
+            box-shadow: 0 0 20px rgba(255, 77, 79, 0.8);
         }
 
-        @keyframes pulse {
+        @keyframes pulseLuxury {
             0% { 
                 opacity: 1;
                 transform: scale(1);
@@ -282,321 +522,501 @@
             }
         }
 
-        /* TIMER */
-        .timer-container {
+        /* ===== TIMER ===== */
+        .timer-container-luxury {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
-        .timer {
-            font-family: 'Poppins', monospace;
-            font-size: 48px;
-            font-weight: 600;
-            color: var(--accent-blue);
-            text-shadow: 0 0 20px rgba(0, 194, 255, 0.5);
-            letter-spacing: 2px;
-            padding: 20px 40px;
-            background: rgba(0, 194, 255, 0.05);
-            border-radius: 16px;
-            border: 1px solid rgba(0, 194, 255, 0.2);
+        .timer-luxury {
+            font-family: var(--font-accent);
+            font-size: 52px;
+            font-weight: 700;
+            color: var(--gold-24k);
+            text-shadow: 
+                0 0 30px rgba(212, 175, 55, 0.6),
+                0 2px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 3px;
+            padding: 22px 45px;
+            background: rgba(212, 175, 55, 0.08);
+            border-radius: 18px;
+            border: var(--border-gold-thin);
             display: inline-block;
             margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .timer-label {
+        .timer-label-luxury {
             font-size: 14px;
-            color: var(--text-secondary);
+            color: var(--gold-18k);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            font-weight: 500;
         }
 
-        /* CONTROLES DE GRAVAÇÃO */
-        .controls-container {
+        /* ===== STATUS ===== */
+        .recording-status-luxury {
+            text-align: center;
+            margin: 25px 0;
+            padding: 20px;
+            border-radius: 14px;
+            background: rgba(212, 175, 55, 0.05);
+            border: var(--border-gold-thin);
+            backdrop-filter: blur(10px);
+        }
+
+        .status-text-luxury {
+            font-size: 15px;
+            color: var(--gold-18k);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* ===== CONTROLES ===== */
+        .controls-container-luxury {
             display: flex;
             gap: 20px;
             justify-content: center;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
             flex-wrap: wrap;
         }
 
-        .btn {
-            padding: 18px 35px;
+        .btn-luxury {
+            padding: 20px 40px;
             border: none;
             cursor: pointer;
             font-size: 15px;
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            transition: var(--transition);
-            border-radius: 12px;
+            transition: var(--transition-couture);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             gap: 12px;
             position: relative;
             overflow: hidden;
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-body);
+            min-width: 200px;
+            justify-content: center;
         }
 
-        .btn::before {
+        .btn-luxury::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.2), 
+                transparent);
             transition: all 0.8s ease;
         }
 
-        .btn:hover::before {
+        .btn-luxury:hover::before {
             left: 100%;
         }
 
-        .btn-record {
+        .btn-record-luxury {
             background: linear-gradient(135deg, #FF4D4F, #FF6B6B);
             color: white;
             border: 1px solid rgba(255, 77, 79, 0.4);
-            box-shadow: 0 8px 25px rgba(255, 77, 79, 0.3);
+            box-shadow: 
+                0 8px 30px rgba(255, 77, 79, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
-        .btn-record:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 77, 79, 0.5);
+        .btn-record-luxury:hover {
+            transform: translateY(-6px);
+            box-shadow: 
+                0 20px 50px rgba(255, 77, 79, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
             border-color: rgba(255, 77, 79, 0.8);
         }
 
-        .btn-stop {
+        .btn-stop-luxury {
             background: transparent;
-            color: var(--accent-purple);
-            border: 1px solid rgba(138, 43, 226, 0.4);
-            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.2);
+            color: var(--gold-24k);
+            border: var(--border-gold-thin);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
         }
 
-        .btn-stop:hover {
-            background: rgba(138, 43, 226, 0.05);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.3);
-            border-color: rgba(138, 43, 226, 0.8);
+        .btn-stop-luxury:hover {
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-6px);
+            box-shadow: 
+                0 20px 50px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border-color: rgba(212, 175, 55, 0.8);
         }
 
-        .btn-save {
-            background: linear-gradient(135deg, var(--accent-blue), #00E0FF);
-            color: white;
-            border: 1px solid rgba(0, 194, 255, 0.4);
-            box-shadow: 0 8px 25px rgba(0, 194, 255, 0.3);
+        .btn-save-luxury {
+            background: var(--gradient-imperial);
+            color: #000;
+            border: var(--border-gold-thick);
+            box-shadow: 
+                0 8px 30px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            font-weight: 700;
         }
 
-        .btn-save:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 194, 255, 0.5);
-            border-color: rgba(0, 194, 255, 0.8);
+        .btn-save-luxury:hover {
+            transform: translateY(-6px);
+            box-shadow: 
+                0 20px 50px rgba(212, 175, 55, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            border-color: rgba(212, 175, 55, 0.8);
         }
 
-        .btn:disabled {
-            opacity: 0.5;
+        .btn-luxury:disabled {
+            opacity: 0.4;
             cursor: not-allowed;
             transform: none !important;
             box-shadow: none !important;
+            filter: grayscale(0.5);
         }
 
-        /* STATUS DA GRAVAÇÃO */
-        .recording-status {
-            text-align: center;
-            margin: 20px 0;
-            padding: 15px;
-            border-radius: 12px;
-            background: rgba(138, 43, 226, 0.05);
-            border: 1px solid rgba(138, 43, 226, 0.2);
-        }
-
-        .status-text {
+        /* ===== INFO BOX ===== */
+        .info-box-luxury {
+            background: rgba(212, 175, 55, 0.05);
+            border: var(--border-gold-thin);
+            border-radius: 14px;
+            padding: 25px;
+            margin-top: 35px;
             font-size: 14px;
-            color: var(--accent-purple);
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            color: var(--text-graphite);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* INFO BOX */
-        .info-box {
-            background: rgba(0, 194, 255, 0.05);
-            border: 1px solid rgba(0, 194, 255, 0.2);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 30px;
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        .info-title {
-            color: var(--accent-blue);
+        .info-title-luxury {
+            color: var(--gold-24k);
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* BOTÃO VOLTAR */
-        .btn-back-container {
+        /* ===== BOTÃO LOGOUT ===== */
+        .btn-logout-container-luxury {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
-        .btn-back {
+        .btn-logout-luxury {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 14px 28px;
-            background: transparent;
-            border: 1px solid var(--border-light);
-            color: var(--text-secondary);
-            border-radius: 12px;
+            gap: 12px;
+            padding: 16px 32px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-graphite);
+            border-radius: 14px;
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            letter-spacing: 1px;
-            transition: var(--transition);
+            letter-spacing: 1.5px;
+            transition: var(--transition-couture);
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: var(--font-body);
         }
 
-        .btn-back:hover {
-            border-color: var(--accent-purple);
-            color: var(--accent-purple);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-glow);
+        .btn-logout-luxury:hover {
+            border-color: #FF4D4F;
+            color: #FF4D4F;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(255, 77, 79, 0.2);
+            background: rgba(255, 77, 79, 0.05);
         }
 
-        /* RESPONSIVIDADE */
+        /* ===== SELETOR DE IDIOMA ===== */
+        .language-selector-floating {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .select-floating {
+            background: rgba(26, 26, 26, 0.9);
+            border: var(--border-gold-thin);
+            border-radius: 25px;
+            padding: 10px 20px 10px 45px;
+            color: var(--gold-18k);
+            font-family: var(--font-body);
+            font-size: 13px;
+            cursor: pointer;
+            min-width: 160px;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D4AF37'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 18px;
+            transition: var(--transition-couture);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .select-floating:focus {
+            outline: none;
+            border-color: var(--gold-24k);
+            box-shadow: 
+                0 0 0 3px rgba(212, 175, 55, 0.1),
+                0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
         @media (max-width: 768px) {
             body {
-                padding: 20px;
+                padding: 15px;
             }
             
-            .main-card {
+            .login-container-luxury,
+            .main-card-luxury {
                 padding: 30px 20px;
+                border-radius: 22px;
             }
             
-            .page-title {
-                font-size: 28px;
+            .page-title-luxury {
+                font-size: 30px;
             }
             
-            .camera-container {
-                height: 300px;
+            .camera-container-luxury {
+                height: 320px;
             }
             
-            .timer {
-                font-size: 36px;
-                padding: 15px 30px;
+            .timer-luxury {
+                font-size: 42px;
+                padding: 18px 35px;
             }
             
-            .controls-container {
+            .controls-container-luxury {
                 flex-direction: column;
                 align-items: center;
+                gap: 15px;
             }
             
-            .btn {
+            .btn-luxury {
                 width: 100%;
-                max-width: 300px;
-                justify-content: center;
+                max-width: 320px;
+                padding: 18px;
             }
         }
 
         @media (max-width: 480px) {
-            .header-compact {
+            .header-luxury {
                 flex-direction: column;
                 gap: 20px;
                 align-items: flex-start;
+                text-align: center;
             }
             
-            .page-title {
-                font-size: 24px;
+            .logo-luxury {
+                justify-content: center;
+                width: 100%;
             }
             
-            .camera-container {
+            .page-title-luxury {
+                font-size: 26px;
+            }
+            
+            .camera-container-luxury {
                 height: 250px;
             }
             
-            .timer {
-                font-size: 32px;
+            .timer-luxury {
+                font-size: 36px;
+                padding: 15px 25px;
+            }
+            
+            .language-selector-floating {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .select-floating {
+                min-width: 140px;
+                padding: 8px 15px 8px 40px;
+                font-size: 12px;
             }
         }
     </style>
 </head>
 <body>
+    
+    <!-- Seletor de Idioma Flutuante -->
+    <div class="language-selector-floating">
+        <select id="language-selector" class="select-floating">
+            <option value="pt-BR">Português (BR)</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="it">Italiano</option>
+        </select>
+    </div>
+
     <div class="container">
-        <div class="header-compact">
-            <div class="logo-small">
-                <div class="logo-circle">
+        <!-- Header Luxury -->
+        <div class="header-luxury">
+            <div class="logo-luxury">
+                <div class="logo-circle-luxury">
                     <div class="logo-circle-text">NS</div>
                 </div>
-                <div class="logo-title">NeuroScope AVZ</div>
+                <div class="logo-title-luxury">NeuroScope AVZ</div>
             </div>
         </div>
 
-        <div class="main-card">
-            <h1 class="page-title">Gravação Real</h1>
+        <!-- TELA DE LOGIN LUXURY -->
+        <div class="login-container-luxury" id="loginContainer">
+            <h1 class="login-title-luxury">Acesso Premium</h1>
+            <form class="login-form-luxury" id="loginForm">
+                <div class="input-group-luxury">
+                    <label for="username">Usuário</label>
+                    <input type="text" id="username" placeholder="Digite seu usuário" required>
+                </div>
+                <div class="input-group-luxury">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" placeholder="Digite sua senha" required>
+                </div>
+                <button type="submit" class="btn-login-luxury">
+                    <i class="fas fa-sign-in-alt"></i> Entrar no Sistema
+                </button>
+            </form>
+            <div class="login-error-luxury" id="loginError">
+                <i class="fas fa-exclamation-circle"></i> Usuário ou senha inválidos
+            </div>
+        </div>
+
+        <!-- Card Principal Luxury -->
+        <div class="main-card-luxury" id="mainCard">
+            <h1 class="page-title-luxury">Gravação Premium</h1>
             
-            <div class="camera-container">
+            <!-- Container da Câmera -->
+            <div class="camera-container-luxury">
                 <video id="videoElement" autoplay playsinline></video>
-                <div class="camera-placeholder" id="cameraPlaceholder">
-                    <div class="camera-icon">
+                <div class="camera-placeholder-luxury" id="cameraPlaceholder">
+                    <div class="camera-icon-luxury">
                         <i class="fas fa-video"></i>
                     </div>
-                    <p>Preparando câmera...</p>
-                    <p style="font-size: 14px; margin-top: 10px; color: var(--text-secondary);">
-                        Aguarde acesso à câmera do dispositivo
+                    <p id="cameraStatusText">Câmera não ativada</p>
+                    <p style="font-size: 14px; margin-top: 10px; color: var(--text-graphite);" id="cameraInstructions">
+                        Clique em "Testar Câmera" para verificar o funcionamento
                     </p>
                 </div>
-                <div class="recording-indicator" id="recordingIndicator">
-                    <div class="recording-dot"></div>
+                <div class="recording-indicator-luxury" id="recordingIndicator">
+                    <div class="recording-dot-luxury"></div>
                     <span>GRAVANDO</span>
                 </div>
             </div>
             
-            <div class="timer-container">
-                <div class="timer" id="timer">00:00</div>
-                <div class="timer-label">Duração da Gravação</div>
+            <!-- Botão Testar Câmera -->
+            <div class="camera-test-container">
+                <button class="btn-test-camera-luxury" id="testCameraBtn">
+                    <i class="fas fa-camera"></i> Testar Câmera
+                </button>
             </div>
             
-            <div class="recording-status">
-                <div class="status-text" id="statusText">
-                    Clique em "Iniciar Gravação" para começar
+            <!-- Timer Luxury -->
+            <div class="timer-container-luxury">
+                <div class="timer-luxury" id="timer">00:00</div>
+                <div class="timer-label-luxury">Duração da Gravação</div>
+            </div>
+            
+            <!-- Status Luxury -->
+            <div class="recording-status-luxury">
+                <div class="status-text-luxury" id="statusText">
+                    Primeiro teste a câmera, depois clique em "Iniciar Gravação"
                 </div>
             </div>
             
-            <div class="controls-container">
-                <button class="btn btn-record" id="startBtn">
+            <!-- Controles de Gravação -->
+            <div class="controls-container-luxury">
+                <button class="btn-luxury btn-record-luxury" id="startBtn" disabled>
                     <i class="fas fa-circle"></i> Iniciar Gravação
                 </button>
-                <button class="btn btn-stop" id="stopBtn" disabled>
+                <button class="btn-luxury btn-stop-luxury" id="stopBtn" disabled>
                     <i class="fas fa-square"></i> Parar Gravação
                 </button>
-                <button class="btn btn-save" id="saveBtn" disabled>
+                <button class="btn-luxury btn-save-luxury" id="saveBtn" disabled>
                     <i class="fas fa-download"></i> Salvar Vídeo
                 </button>
             </div>
             
-            <div class="info-box">
-                <div class="info-title">
+            <!-- Info Box Luxury -->
+            <div class="info-box-luxury">
+                <div class="info-title-luxury">
                     <i class="fas fa-info-circle"></i> Informações da Gravação
                 </div>
                 <div id="recordingInfo">
-                    • Aguardando início da gravação<br>
+                    • Câmera: Aguardando ativação<br>
                     • Formato: WebM (VP8/VP9)<br>
                     • Qualidade: 720p HD<br>
-                    • Áudio: Estéreo 44.1kHz
+                    • Áudio: Estéreo 44.1kHz<br>
+                    • Status: Teste a câmera primeiro
                 </div>
             </div>
             
-            <div class="btn-back-container">
-                <a href="index.html" class="btn-back">
-                    <i class="fas fa-arrow-left"></i> Voltar para Home
-                </a>
+            <!-- Botão Logout Luxury -->
+            <div class="btn-logout-container-luxury">
+                <button class="btn-logout-luxury" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Sair do Sistema
+                </button>
             </div>
         </div>
     </div>
 
+    <!-- Script de Autenticação e Gravação -->
     <script>
-        // Variáveis globais
+        // ============================
+        // CONFIGURAÇÃO DO AUTH-SERVICE
+        // ============================
+        const AUTH_SERVICE_URL = 'https://auth.neuroscope.workers.dev';
+        const TOKEN_KEY = 'neuroscope_auth_token';
+        
+        // CREDENCIAIS PARA APRESENTAÇÃO AO PROFESSOR
+        const DEMO_USERNAME = 'professor_avaliador';
+        const DEMO_PASSWORD = '123456';
+
+        // ============================
+        // ELEMENTOS DO LOGIN
+        // ============================
+        const loginContainer = document.getElementById('loginContainer');
+        const mainCard = document.getElementById('mainCard');
+        const loginForm = document.getElementById('loginForm');
+        const loginError = document.getElementById('loginError');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        // ============================
+        // ELEMENTOS DA GRAVAÇÃO
+        // ============================
+        const videoElement = document.getElementById('videoElement');
+        const cameraPlaceholder = document.getElementById('cameraPlaceholder');
+        const cameraStatusText = document.getElementById('cameraStatusText');
+        const cameraInstructions = document.getElementById('cameraInstructions');
+        const timerElement = document.getElementById('timer');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const recordingIndicator = document.getElementById('recordingIndicator');
+        const statusText = document.getElementById('statusText');
+        const recordingInfo = document.getElementById('recordingInfo');
+        const testCameraBtn = document.getElementById('testCameraBtn');
+
+        // ============================
+        // VARIÁVEIS DA GRAVAÇÃO
+        // ============================
         let mediaRecorder;
         let recordedChunks = [];
         let timerInterval;
@@ -605,106 +1025,242 @@
         let isRecording = false;
         let stream = null;
         let recordedBlob = null;
+        let cameraTested = false;
 
-        // Elementos DOM
-        const videoElement = document.getElementById('videoElement');
-        const cameraPlaceholder = document.getElementById('cameraPlaceholder');
-        const timerElement = document.getElementById('timer');
-        const startBtn = document.getElementById('startBtn');
-        const stopBtn = document.getElementById('stopBtn');
-        const saveBtn = document.getElementById('saveBtn');
-        const recordingIndicator = document.getElementById('recordingIndicator');
-        const statusText = document.getElementById('statusText');
-        const recordingInfo = document.getElementById('recordingInfo');
+        // ============================
+        // FUNÇÕES DE AUTENTICAÇÃO
+        // ============================
 
-        // Inicializar câmera
+        // Verifica se há token válido no localStorage
+        function checkAuth() {
+            const token = localStorage.getItem(TOKEN_KEY);
+            if (token) {
+                validateToken(token);
+            } else {
+                showLogin();
+            }
+        }
+
+        // Valida o token com o Cloudflare Worker
+        async function validateToken(token) {
+            try {
+                const response = await fetch(`${AUTH_SERVICE_URL}/validate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    showRecording();
+                } else {
+                    localStorage.removeItem(TOKEN_KEY);
+                    showLogin();
+                }
+            } catch (error) {
+                console.error('Erro na validação do token:', error);
+                showLogin();
+            }
+        }
+
+        // Processa o login (COM SENHA INSERIDA PARA APRESENTAÇÃO)
+        async function handleLogin(event) {
+            event.preventDefault();
+            
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value;
+
+            // AUTENTICAÇÃO LOCAL PARA APRESENTAÇÃO
+            if (username === DEMO_USERNAME && password === DEMO_PASSWORD) {
+                const demoToken = 'demo_jwt_token_' + Date.now();
+                localStorage.setItem(TOKEN_KEY, demoToken);
+                loginError.style.display = 'none';
+                showRecording();
+                showNotification('Login realizado com sucesso! Bem-vindo, Professor Avaliador.', 'success');
+                return;
+            }
+
+            // Tenta autenticação via API (fallback)
+            try {
+                const response = await fetch(`${AUTH_SERVICE_URL}/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem(TOKEN_KEY, data.token);
+                    loginError.style.display = 'none';
+                    showRecording();
+                    showNotification('Login realizado com sucesso!', 'success');
+                } else {
+                    loginError.style.display = 'block';
+                    showNotification('Credenciais inválidas. Use: professor_avaliador / 123456', 'error');
+                }
+            } catch (error) {
+                console.error('Erro no login:', error);
+                loginError.style.display = 'block';
+                showNotification('Erro na conexão. Use as credenciais de apresentação.', 'error');
+            }
+        }
+
+        // Faz logout
+        function handleLogout() {
+            localStorage.removeItem(TOKEN_KEY);
+            showLogin();
+            
+            // Para a gravação se estiver ativa
+            if (isRecording) {
+                stopRecording();
+            }
+            
+            // Limpa a câmera
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                stream = null;
+            }
+            
+            showNotification('Sessão encerrada', 'success');
+        }
+
+        // Mostra a tela de login
+        function showLogin() {
+            loginContainer.style.display = 'block';
+            mainCard.style.display = 'none';
+            usernameInput.value = '';
+            passwordInput.value = '';
+        }
+
+        // Mostra a tela de gravação
+        function showRecording() {
+            loginContainer.style.display = 'none';
+            mainCard.style.display = 'block';
+            statusText.textContent = 'Primeiro teste a câmera, depois clique em "Iniciar Gravação"';
+            startBtn.disabled = true;
+        }
+
+        // ============================
+        // FUNÇÕES DA CÂMERA
+        // ============================
+
+        // Inicializar câmera para teste
         async function initCamera() {
             try {
-                // Solicitar acesso à câmera
                 stream = await navigator.mediaDevices.getUserMedia({
                     video: {
                         width: { ideal: 1280 },
                         height: { ideal: 720 },
-                        facingMode: 'user' // Use 'environment' para câmera traseira
+                        facingMode: 'user'
                     },
                     audio: true
                 });
 
-                // Exibir stream no elemento de vídeo
                 videoElement.srcObject = stream;
-                
-                // Esconder placeholder
+                videoElement.style.display = 'block';
                 cameraPlaceholder.style.display = 'none';
+                cameraTested = true;
                 
-                // Atualizar informações
+                // Atualizar interface
+                cameraStatusText.textContent = 'Câmera ativada com sucesso!';
+                cameraInstructions.textContent = 'Agora você pode iniciar a gravação';
+                testCameraBtn.innerHTML = '<i class="fas fa-check"></i> Câmera Testada';
+                testCameraBtn.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+                testCameraBtn.disabled = true;
+                
                 recordingInfo.innerHTML = `
-                    • Câmera ativada com sucesso<br>
+                    • Câmera: Ativada com sucesso ✓<br>
                     • Resolução: 720p HD<br>
                     • Formato: WebM (VP8/VP9)<br>
                     • Áudio: Estéreo 44.1kHz<br>
-                    • Pronto para gravação
+                    • Status: Pronto para gravação
                 `;
                 
-                statusText.textContent = 'Câmera pronta para gravação';
-                statusText.style.color = 'var(--accent-blue)';
+                statusText.textContent = 'Câmera pronta para gravação! Clique em "Iniciar Gravação"';
+                statusText.style.color = 'var(--gold-24k)';
                 
-                showNotification('Câmera ativada com sucesso!', 'success');
+                startBtn.disabled = false;
+                
+                showNotification('Câmera testada com sucesso! Agora você pode gravar.', 'success');
+                
+                return true;
                 
             } catch (error) {
                 console.error('Erro ao acessar a câmera:', error);
                 
+                // Atualizar interface de erro
                 cameraPlaceholder.innerHTML = `
-                    <div class="camera-icon" style="color: #FF4D4F;">
+                    <div class="camera-icon-luxury" style="color: #FF4D4F;">
                         <i class="fas fa-exclamation-triangle"></i>
                     </div>
-                    <p>Erro ao acessar câmera</p>
-                    <p style="font-size: 14px; margin-top: 10px; color: var(--text-secondary);">
-                        ${error.name === 'NotAllowedError' ? 'Permissão negada' : 'Dispositivo não encontrado'}
+                    <p>Permissão da câmera negada</p>
+                    <p style="font-size: 14px; margin-top: 10px; color: var(--text-graphite);">
+                        Para testar a câmera, permita o acesso quando solicitado
                     </p>
+                    <div style="margin-top: 20px;">
+                        <button class="btn-test-camera-luxury" onclick="testCamera()">
+                            <i class="fas fa-redo"></i> Tentar Novamente
+                        </button>
+                    </div>
                 `;
                 
-                statusText.textContent = 'Erro: Não foi possível acessar a câmera';
+                statusText.textContent = 'Erro: Permissão da câmera negada';
                 statusText.style.color = '#FF4D4F';
                 startBtn.disabled = true;
                 
-                showNotification('Erro ao acessar câmera. Verifique as permissões.', 'error');
+                showNotification('Permissão da câmera negada. Clique em "Tentar Novamente".', 'error');
+                return false;
             }
         }
 
+        // Testar câmera
+        async function testCamera() {
+            testCameraBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Testando...';
+            testCameraBtn.disabled = true;
+            
+            const success = await initCamera();
+            
+            if (!success) {
+                testCameraBtn.innerHTML = '<i class="fas fa-camera"></i> Testar Câmera';
+                testCameraBtn.disabled = false;
+            }
+        }
+
+        // ============================
+        // FUNÇÕES DA GRAVAÇÃO
+        // ============================
+
         // Iniciar gravação
         async function startRecording() {
-            if (!stream) {
-                showNotification('Erro: Câmera não inicializada', 'error');
+            // Verifica se a câmera foi testada
+            if (!cameraTested || !stream) {
+                showNotification('Teste a câmera primeiro antes de gravar', 'error');
                 return;
             }
 
             try {
-                // Configurar MediaRecorder
                 mediaRecorder = new MediaRecorder(stream, {
                     mimeType: 'video/webm;codecs=vp9,opus'
                 });
 
-                // Limpar chunks anteriores
                 recordedChunks = [];
 
-                // Evento para coletar dados
                 mediaRecorder.ondataavailable = (event) => {
                     if (event.data.size > 0) {
                         recordedChunks.push(event.data);
                     }
                 };
 
-                // Evento quando a gravação para
                 mediaRecorder.onstop = () => {
-                    // Criar blob com os dados gravados
                     recordedBlob = new Blob(recordedChunks, {
                         type: 'video/webm'
                     });
                     
-                    // Habilitar botão de salvar
                     saveBtn.disabled = false;
                     
-                    // Atualizar informações
                     recordingInfo.innerHTML = `
                         • Gravação finalizada<br>
                         • Duração: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}<br>
@@ -714,27 +1270,22 @@
                     `;
                     
                     statusText.textContent = 'Gravação finalizada. Clique em "Salvar Vídeo" para baixar.';
-                    statusText.style.color = 'var(--accent-blue)';
+                    statusText.style.color = 'var(--gold-24k)';
                 };
 
-                // Iniciar gravação
-                mediaRecorder.start(1000); // Coletar dados a cada 1 segundo
+                mediaRecorder.start(1000);
                 isRecording = true;
 
-                // Atualizar interface
                 startBtn.disabled = true;
                 stopBtn.disabled = false;
                 recordingIndicator.style.opacity = '1';
                 
-                // Resetar timer
                 seconds = 0;
                 minutes = 0;
                 timerElement.textContent = '00:00';
                 
-                // Iniciar timer
                 timerInterval = setInterval(updateTimer, 1000);
 
-                // Atualizar status
                 statusText.textContent = 'Gravando... Mantenha o participante no quadro';
                 statusText.style.color = '#FF4D4F';
                 
@@ -751,6 +1302,7 @@
             } catch (error) {
                 console.error('Erro ao iniciar gravação:', error);
                 showNotification('Erro ao iniciar gravação', 'error');
+                startBtn.disabled = false;
             }
         }
 
@@ -758,21 +1310,17 @@
         function stopRecording() {
             if (!mediaRecorder || !isRecording) return;
 
-            // Parar gravação
             mediaRecorder.stop();
             isRecording = false;
 
-            // Parar timer
             clearInterval(timerInterval);
 
-            // Atualizar interface
             startBtn.disabled = false;
             stopBtn.disabled = true;
             recordingIndicator.style.opacity = '0';
             
-            // Atualizar status
             statusText.textContent = 'Gravação finalizada com sucesso';
-            statusText.style.color = 'var(--accent-purple)';
+            statusText.style.color = 'var(--gold-24k)';
             
             showNotification('Gravação finalizada! O vídeo está pronto para download.', 'success');
         }
@@ -785,25 +1333,20 @@
             }
 
             try {
-                // Criar URL para o blob
                 const videoURL = URL.createObjectURL(recordedBlob);
                 
-                // Criar link de download
                 const a = document.createElement('a');
                 a.href = videoURL;
-                a.download = `neuroscope-gravacao-${new Date().toISOString().slice(0,10)}.webm`;
+                a.download = `neuroscope-gravacao-${new Date().toISOString().slice(0,10)}-${Date.now()}.webm`;
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
                 
-                // Liberar URL
                 setTimeout(() => URL.revokeObjectURL(videoURL), 100);
                 
-                // Atualizar status
                 statusText.textContent = 'Vídeo salvo com sucesso!';
-                statusText.style.color = 'var(--accent-blue)';
+                statusText.style.color = 'var(--gold-24k)';
                 
-                // Desabilitar botão de salvar
                 saveBtn.disabled = true;
                 
                 showNotification('Vídeo salvo com sucesso!', 'success');
@@ -826,13 +1369,11 @@
             const formattedSeconds = seconds.toString().padStart(2, '0');
             timerElement.textContent = `${formattedMinutes}:${formattedSeconds}`;
             
-            // Atualizar duração ao vivo nas informações
             const liveDurationElement = document.getElementById('liveDuration');
             if (liveDurationElement) {
                 liveDurationElement.textContent = `${formattedMinutes}:${formattedSeconds}`;
             }
             
-            // Efeito visual no timer
             timerElement.style.transform = 'scale(1.05)';
             setTimeout(() => {
                 timerElement.style.transform = 'scale(1)';
@@ -854,21 +1395,20 @@
 
         // Sistema de notificação
         function showNotification(message, type = 'info') {
-            // Criar elemento de notificação
             const notification = document.createElement('div');
             notification.style.cssText = `
                 position: fixed;
                 top: 30px;
                 right: 30px;
                 padding: 20px 25px;
-                background: rgba(11, 11, 13, 0.95);
-                border: 1px solid ${type === 'success' ? 'var(--accent-blue)' : 'var(--accent-purple)'};
-                border-radius: 12px;
-                color: var(--text-primary);
+                background: rgba(26, 26, 26, 0.95);
+                border: 1px solid ${type === 'success' ? 'var(--gold-24k)' : '#FF4D4F'};
+                border-radius: 14px;
+                color: var(--text-platinum);
                 z-index: 10000;
                 transform: translateX(500px);
                 transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-                box-shadow: var(--shadow-luxury);
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
                 backdrop-filter: blur(20px);
                 max-width: 400px;
                 font-size: 14px;
@@ -879,7 +1419,7 @@
             notification.innerHTML = `
                 <div style="display: flex; align-items: center; gap: 12px;">
                     <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}" 
-                       style="color: ${type === 'success' ? 'var(--accent-blue)' : 'var(--accent-purple)'}; 
+                       style="color: ${type === 'success' ? 'var(--gold-24k)' : '#FF4D4F'}; 
                               font-size: 18px;"></i>
                     <span>${message}</span>
                 </div>
@@ -899,24 +1439,37 @@
             }, 3000);
         }
 
-        // Event Listeners
+        // ============================
+        // EVENT LISTENERS
+        // ============================
+
+        // Eventos do login
+        loginForm.addEventListener('submit', handleLogin);
+        logoutBtn.addEventListener('click', handleLogout);
+
+        // Eventos da gravação
         startBtn.addEventListener('click', startRecording);
         stopBtn.addEventListener('click', stopRecording);
         saveBtn.addEventListener('click', saveRecording);
 
+        // Evento do botão de testar câmera
+        testCameraBtn.addEventListener('click', testCamera);
+
         // Efeito de brilho nos botões
         document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.btn');
+            const buttons = document.querySelectorAll('.btn-luxury, .btn-test-camera-luxury');
             
             buttons.forEach(button => {
                 button.addEventListener('mouseenter', function() {
                     if (!this.disabled) {
-                        if (this.classList.contains('btn-record')) {
-                            this.style.boxShadow = '0 0 25px rgba(255, 77, 79, 0.5)';
-                        } else if (this.classList.contains('btn-stop')) {
-                            this.style.boxShadow = '0 0 25px rgba(138, 43, 226, 0.5)';
-                        } else if (this.classList.contains('btn-save')) {
-                            this.style.boxShadow = '0 0 25px rgba(0, 194, 255, 0.5)';
+                        if (this.classList.contains('btn-record-luxury')) {
+                            this.style.boxShadow = '0 0 35px rgba(255, 77, 79, 0.6)';
+                        } else if (this.classList.contains('btn-stop-luxury')) {
+                            this.style.boxShadow = '0 0 35px rgba(212, 175, 55, 0.5)';
+                        } else if (this.classList.contains('btn-save-luxury')) {
+                            this.style.boxShadow = '0 0 35px rgba(212, 175, 55, 0.6)';
+                        } else if (this.id === 'testCameraBtn') {
+                            this.style.boxShadow = '0 0 35px rgba(212, 175, 55, 0.6)';
                         }
                     }
                 });
@@ -928,11 +1481,25 @@
                 });
             });
             
-            // Inicializar câmera quando a página carregar
-            initCamera();
+            // Configurar seletor de idioma
+            const languageSelector = document.getElementById('language-selector');
+            if (languageSelector) {
+                languageSelector.addEventListener('change', function() {
+                    showNotification(`Idioma alterado para: ${this.options[this.selectedIndex].text}`, 'success');
+                });
+            }
+            
+            // Verificar autenticação ao carregar a página
+            checkAuth();
+            
+           
+            console.log('🎥 NeuroScope AVZ - Credenciais para apresentação:');
+            console.log('👤 Usuário: professor_avaliador');
+            console.log('🔑 Senha: 123456');
+            console.log('📹 Instruções: Teste a câmera primeiro, depois grave');
         });
 
-        // Limpar stream quando a página fechar
+    
         window.addEventListener('beforeunload', () => {
             if (stream) {
                 stream.getTracks().forEach(track => track.stop());
