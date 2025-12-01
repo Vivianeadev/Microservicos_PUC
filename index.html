@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroScope AVZ - Gravação Real</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* VARIÁVEIS DE ESTILO AVZ NEUROSCOPE */
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #0c0c0d;
+            --panel-bg: #0b0b0d;
+            --text-primary: #F0F0F0;
+            --text-secondary: #B0B0B0;
+            --accent-purple: #8A2BE2;
+            --accent-blue: #00C2FF;
+            --gold-accent: #D4AF37;
+            --border-color: rgba(212, 175, 55, 0.2);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --shadow-luxury: 0 25px 50px rgba(0, 0, 0, 0.25), 0 15px 30px rgba(0, 0, 0, 0.2);
+            --shadow-glow: 0 8px 32px rgba(138, 43, 226, 0.3);
+            --shadow-blue: 0 8px 32px rgba(0, 194, 255, 0.25);
+            --gradient-purple-blue: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-blue) 100%);
+            --gradient-gold: linear-gradient(135deg, #D4AF37 0%, #F4E4B8 50%, #B8860B 100%);
+            --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 30px;
+            font-weight: 300;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 194, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* HEADER COMPACTO */
+        .header-compact {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--border-light);
+            position: relative;
+        }
+
+        .header-compact::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background: var(--gradient-purple-blue);
+        }
+
+        .logo-small {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: var(--gradient-purple-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .logo-circle-text {
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .logo-title {
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* CONTAINER PRINCIPAL */
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* CARD PRINCIPAL */
+        .main-card {
+            background: rgba(11, 11, 13, 0.95);
+            backdrop-filter: blur(30px);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-luxury);
+            position: relative;
+            overflow: hidden;
+            animation: containerEntrance 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-purple-blue);
+            z-index: 2;
+        }
+
+        @keyframes containerEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* TÍTULO DA PÁGINA */
+        .page-title {
+            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-purple-blue);
+            border-radius: 2px;
+        }
+
+        /* VISUALIZADOR DE CÂMERA REAL */
+        .camera-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--border-light);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .camera-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--gradient-purple-blue);
+            border-radius: 22px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        #videoElement {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #000;
+        }
+
+        .camera-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--text-secondary);
+            z-index: 2;
+        }
+
+        .camera-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: rgba(138, 43, 226, 0.5);
+        }
+
+        .recording-indicator {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #FF4D4F;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 77, 79, 0.3);
+        }
+
+        .recording-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #FF4D4F;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 15px rgba(255, 77, 79, 0.8);
+        }
+
+        @keyframes pulse {
+            0% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+            100% { 
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* TIMER */
+        .timer-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .timer {
+            font-family: 'Poppins', monospace;
+            font-size: 48px;
+            font-weight: 600;
+            color: var(--accent-blue);
+            text-shadow: 0 0 20px rgba(0, 194, 255, 0.5);
+            letter-spacing: 2px;
+            padding: 20px 40px;
+            background: rgba(0, 194, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 194, 255, 0.2);
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .timer-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* CONTROLES DE GRAVAÇÃO */
+        .controls-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 35px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: var(--transition);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.8s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-record {
+            background: linear-gradient(135deg, #FF4D4F, #FF6B6B);
+            color: white;
+            border: 1px solid rgba(255, 77, 79, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 77, 79, 0.3);
+        }
+
+        .btn-record:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 77, 79, 0.5);
+            border-color: rgba(255, 77, 79, 0.8);
+        }
+
+        .btn-stop {
+            background: transparent;
+            color: var(--accent-purple);
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.2);
+        }
+
+        .btn-stop:hover {
+            background: rgba(138, 43, 226, 0.05);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.3);
+            border-color: rgba(138, 43, 226, 0.8);
+        }
+
+        .btn-save {
+            background: linear-gradient(135deg, var(--accent-blue), #00E0FF);
+            color: white;
+            border: 1px solid rgba(0, 194, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 194, 255, 0.3);
+        }
+
+        .btn-save:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 194, 255, 0.5);
+            border-color: rgba(0, 194, 255, 0.8);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* STATUS DA GRAVAÇÃO */
+        .recording-status {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 12px;
+            background: rgba(138, 43, 226, 0.05);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .status-text {
+            font-size: 14px;
+            color: var(--accent-purple);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* INFO BOX */
+        .info-box {
+            background: rgba(0, 194, 255, 0.05);
+            border: 1px solid rgba(0, 194, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .info-title {
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* BOTÃO VOLTAR */
+        .btn-back-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .btn-back:hover {
+            border-color: var(--accent-purple);
+            color: var(--accent-purple);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            
+            .main-card {
+                padding: 30px 20px;
+            }
+            
+            .page-title {
+                font-size: 28px;
+            }
+            
+            .camera-container {
+                height: 300px;
+            }
+            
+            .timer {
+                font-size: 36px;
+                padding: 15px 30px;
+            }
+            
+            .controls-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-compact {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+            
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .camera-container {
+                height: 250px;
+            }
+            
+            .timer {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-compact">
+            <div class="logo-small">
+                <div class="logo-circle">
+                    <div class="logo-circle-text">NS</div>
+                </div>
+                <div class="logo-title">NeuroScope AVZ</div>
+            </div>
+        </div>
+
+        <div class="main-card">
+            <h1 class="page-title">Gravação Real</h1>
+            
+            <div class="camera-container">
+                <video id="videoElement" autoplay playsinline></video>
+                <div class="camera-placeholder" id="cameraPlaceholder">
+                    <div class="camera-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <p>Preparando câmera...</p>
+                    <p style="font-size: 14px; margin-top: 10px; color: var(--text-secondary);">
+                        Aguarde acesso à câmera do dispositivo
+                    </p>
+                </div>
+                <div class="recording-indicator" id="recordingIndicator">
+                    <div class="recording-dot"></div>
+                    <span>GRAVANDO</span>
+                </div>
+            </div>
+            
+            <div class="timer-container">
+                <div class="timer" id="timer">00:00</div>
+                <div class="timer-label">Duração da Gravação</div>
+            </div>
+            
+            <div class="recording-status">
+                <div class="status-text" id="statusText">
+                    Clique em "Iniciar Gravação" para começar
+                </div>
+            </div>
+            
+            <div class="controls-container">
+                <button class="btn btn-record" id="startBtn">
+                    <i class="fas fa-circle"></i> Iniciar Gravação
+                </button>
+                <button class="btn btn-stop" id="stopBtn" disabled>
+                    <i class="fas fa-square"></i> Parar Gravação
+                </button>
+                <button class="btn btn-save" id="saveBtn" disabled>
+                    <i class="fas fa-download"></i> Salvar Vídeo
+                </button>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-title">
+                    <i class="fas fa-info-circle"></i> Informações da Gravação
+                </div>
+                <div id="recordingInfo">
+                    • Aguardando início da gravação<br>
+                    • Formato: WebM (VP8/VP9)<br>
+                    • Qualidade: 720p HD<br>
+                    • Áudio: Estéreo 44.1kHz
+                </div>
+            </div>
+            
+            <div class="btn-back-container">
+                <a href="index.html" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Voltar para Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Variáveis globais
+        let mediaRecorder;
+        let recordedChunks = [];
+        let timerInterval;
+        let seconds = 0;
+        let minutes = 0;
+        let isRecording = false;
+        let stream = null;
+        let recordedBlob = null;
+
+        // Elementos DOM
+        const videoElement = document.getElementById('videoElement');
+        const cameraPlaceholder = document.getElementById('cameraPlaceholder');
+        const timerElement = document.getElementById('timer');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const recordingIndicator = document.getElementById('recordingIndicator');
+        const statusText = document.getElementById('statusText');
+        const recordingInfo = document.getElementById('recordingInfo');
+
+        // Inicializar câmera
+        async function initCamera() {
+            try {
+                // Solicitar acesso à câmera
+                stream = await navigator.mediaDevices.getUserMedia({
+                    video: {
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 },
+                        facingMode: 'user' // Use 'environment' para câmera traseira
+                    },
+                    audio: true
+                });
+
+                // Exibir stream no elemento de vídeo
+                videoElement.srcObject = stream;
+                
+                // Esconder placeholder
+                cameraPlaceholder.style.display = 'none';
+                
+                // Atualizar informações
+                recordingInfo.innerHTML = `
+                    • Câmera ativada com sucesso<br>
+                    • Resolução: 720p HD<br>
+                    • Formato: WebM (VP8/VP9)<br>
+                    • Áudio: Estéreo 44.1kHz<br>
+                    • Pronto para gravação
+                `;
+                
+                statusText.textContent = 'Câmera pronta para gravação';
+                statusText.style.color = 'var(--accent-blue)';
+                
+                showNotification('Câmera ativada com sucesso!', 'success');
+                
+            } catch (error) {
+                console.error('Erro ao acessar a câmera:', error);
+                
+                cameraPlaceholder.innerHTML = `
+                    <div class="camera-icon" style="color: #FF4D4F;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <p>Erro ao acessar câmera</p>
+                    <p style="font-size: 14px; margin-top: 10px; color: var(--text-secondary);">
+                        ${error.name === 'NotAllowedError' ? 'Permissão negada' : 'Dispositivo não encontrado'}
+                    </p>
+                `;
+                
+                statusText.textContent = 'Erro: Não foi possível acessar a câmera';
+                statusText.style.color = '#FF4D4F';
+                startBtn.disabled = true;
+                
+                showNotification('Erro ao acessar câmera. Verifique as permissões.', 'error');
+            }
+        }
+
+        // Iniciar gravação
+        async function startRecording() {
+            if (!stream) {
+                showNotification('Erro: Câmera não inicializada', 'error');
+                return;
+            }
+
+            try {
+                // Configurar MediaRecorder
+                mediaRecorder = new MediaRecorder(stream, {
+                    mimeType: 'video/webm;codecs=vp9,opus'
+                });
+
+                // Limpar chunks anteriores
+                recordedChunks = [];
+
+                // Evento para coletar dados
+                mediaRecorder.ondataavailable = (event) => {
+                    if (event.data.size > 0) {
+                        recordedChunks.push(event.data);
+                    }
+                };
+
+                // Evento quando a gravação para
+                mediaRecorder.onstop = () => {
+                    // Criar blob com os dados gravados
+                    recordedBlob = new Blob(recordedChunks, {
+                        type: 'video/webm'
+                    });
+                    
+                    // Habilitar botão de salvar
+                    saveBtn.disabled = false;
+                    
+                    // Atualizar informações
+                    recordingInfo.innerHTML = `
+                        • Gravação finalizada<br>
+                        • Duração: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}<br>
+                        • Tamanho: ${formatBytes(recordedBlob.size)}<br>
+                        • Formato: WebM (VP8/VP9)<br>
+                        • Pronto para download
+                    `;
+                    
+                    statusText.textContent = 'Gravação finalizada. Clique em "Salvar Vídeo" para baixar.';
+                    statusText.style.color = 'var(--accent-blue)';
+                };
+
+                // Iniciar gravação
+                mediaRecorder.start(1000); // Coletar dados a cada 1 segundo
+                isRecording = true;
+
+                // Atualizar interface
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+                recordingIndicator.style.opacity = '1';
+                
+                // Resetar timer
+                seconds = 0;
+                minutes = 0;
+                timerElement.textContent = '00:00';
+                
+                // Iniciar timer
+                timerInterval = setInterval(updateTimer, 1000);
+
+                // Atualizar status
+                statusText.textContent = 'Gravando... Mantenha o participante no quadro';
+                statusText.style.color = '#FF4D4F';
+                
+                recordingInfo.innerHTML = `
+                    • Gravando...<br>
+                    • Duração: <span id="liveDuration">00:00</span><br>
+                    • Formato: WebM (VP8/VP9)<br>
+                    • Qualidade: 720p HD<br>
+                    • Status: Ativa
+                `;
+                
+                showNotification('Gravação iniciada!', 'success');
+                
+            } catch (error) {
+                console.error('Erro ao iniciar gravação:', error);
+                showNotification('Erro ao iniciar gravação', 'error');
+            }
+        }
+
+        // Parar gravação
+        function stopRecording() {
+            if (!mediaRecorder || !isRecording) return;
+
+            // Parar gravação
+            mediaRecorder.stop();
+            isRecording = false;
+
+            // Parar timer
+            clearInterval(timerInterval);
+
+            // Atualizar interface
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            recordingIndicator.style.opacity = '0';
+            
+            // Atualizar status
+            statusText.textContent = 'Gravação finalizada com sucesso';
+            statusText.style.color = 'var(--accent-purple)';
+            
+            showNotification('Gravação finalizada! O vídeo está pronto para download.', 'success');
+        }
+
+        // Salvar vídeo
+        function saveRecording() {
+            if (!recordedBlob) {
+                showNotification('Nenhuma gravação para salvar', 'error');
+                return;
+            }
+
+            try {
+                // Criar URL para o blob
+                const videoURL = URL.createObjectURL(recordedBlob);
+                
+                // Criar link de download
+                const a = document.createElement('a');
+                a.href = videoURL;
+                a.download = `neuroscope-gravacao-${new Date().toISOString().slice(0,10)}.webm`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                
+                // Liberar URL
+                setTimeout(() => URL.revokeObjectURL(videoURL), 100);
+                
+                // Atualizar status
+                statusText.textContent = 'Vídeo salvo com sucesso!';
+                statusText.style.color = 'var(--accent-blue)';
+                
+                // Desabilitar botão de salvar
+                saveBtn.disabled = true;
+                
+                showNotification('Vídeo salvo com sucesso!', 'success');
+                
+            } catch (error) {
+                console.error('Erro ao salvar vídeo:', error);
+                showNotification('Erro ao salvar vídeo', 'error');
+            }
+        }
+
+        // Atualizar timer
+        function updateTimer() {
+            seconds++;
+            if (seconds >= 60) {
+                seconds = 0;
+                minutes++;
+            }
+            
+            const formattedMinutes = minutes.toString().padStart(2, '0');
+            const formattedSeconds = seconds.toString().padStart(2, '0');
+            timerElement.textContent = `${formattedMinutes}:${formattedSeconds}`;
+            
+            // Atualizar duração ao vivo nas informações
+            const liveDurationElement = document.getElementById('liveDuration');
+            if (liveDurationElement) {
+                liveDurationElement.textContent = `${formattedMinutes}:${formattedSeconds}`;
+            }
+            
+            // Efeito visual no timer
+            timerElement.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                timerElement.style.transform = 'scale(1)';
+            }, 100);
+        }
+
+        // Formatar bytes para legibilidade
+        function formatBytes(bytes, decimals = 2) {
+            if (bytes === 0) return '0 Bytes';
+            
+            const k = 1024;
+            const dm = decimals < 0 ? 0 : decimals;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        }
+
+        // Sistema de notificação
+        function showNotification(message, type = 'info') {
+            // Criar elemento de notificação
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 30px;
+                right: 30px;
+                padding: 20px 25px;
+                background: rgba(11, 11, 13, 0.95);
+                border: 1px solid ${type === 'success' ? 'var(--accent-blue)' : 'var(--accent-purple)'};
+                border-radius: 12px;
+                color: var(--text-primary);
+                z-index: 10000;
+                transform: translateX(500px);
+                transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                box-shadow: var(--shadow-luxury);
+                backdrop-filter: blur(20px);
+                max-width: 400px;
+                font-size: 14px;
+                font-weight: 500;
+                letter-spacing: 0.5px;
+            `;
+            
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}" 
+                       style="color: ${type === 'success' ? 'var(--accent-blue)' : 'var(--accent-purple)'}; 
+                              font-size: 18px;"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 10);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(500px)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 600);
+            }, 3000);
+        }
+
+        // Event Listeners
+        startBtn.addEventListener('click', startRecording);
+        stopBtn.addEventListener('click', stopRecording);
+        saveBtn.addEventListener('click', saveRecording);
+
+        // Efeito de brilho nos botões
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn');
+            
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    if (!this.disabled) {
+                        if (this.classList.contains('btn-record')) {
+                            this.style.boxShadow = '0 0 25px rgba(255, 77, 79, 0.5)';
+                        } else if (this.classList.contains('btn-stop')) {
+                            this.style.boxShadow = '0 0 25px rgba(138, 43, 226, 0.5)';
+                        } else if (this.classList.contains('btn-save')) {
+                            this.style.boxShadow = '0 0 25px rgba(0, 194, 255, 0.5)';
+                        }
+                    }
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    if (!this.disabled) {
+                        this.style.boxShadow = '';
+                    }
+                });
+            });
+            
+            // Inicializar câmera quando a página carregar
+            initCamera();
+        });
+
+        // Limpar stream quando a página fechar
+        window.addEventListener('beforeunload', () => {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+        });
+    </script>
+</body>
+</html>
